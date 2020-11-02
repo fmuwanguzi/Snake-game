@@ -1,2 +1,2 @@
-# my-cool-game
+#snake-game
 the snake game
