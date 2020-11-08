@@ -1,4 +1,4 @@
-##Snake-game
+## Snake-game
 
 Goal of the game is to have a block generate move using keys on keyboard. And eat other blocks kind of like pacman. 
 
