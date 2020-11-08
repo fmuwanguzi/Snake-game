@@ -18,37 +18,50 @@ const ctx = game.getContext('2d')
           this.color = color
           this.width = width
           this.height = height
-          this.direction = direction
+          this.direction = direction //snake can now move automatically
+          this.alive = true
     
 }
-
 render(){
     ctx.fillStyle = this.color
     ctx.fillRect(this.x, this.y, this.width, this.height)
-  }
 }
+// class block {
+//     constructor(x, y, color, width, height){
+//         this.x = x
+//         this.y = y
+//         this.color = color
+//         this.width = width
+//         this.height = height
+  
+// }
+}
+// document.getElementById('status').addEventListener('click', function(){
+//     snake.render()
+//     Block1.render()
+// })
 
 const snake = new snakeBlock(200, 200, '#55dac6', 10, 10, 'left')
-const Block1 = new snakeBlock(10, 10, 'blue', 10, 10, 'null')
+const block1 = new snakeBlock(10, 10, 'blue', 10, 10, 'null')
 
 
-class Block {
-    constructor(x, y, color, width, height, direction){
-        this.x = x
-        this.y = y
-        this.color = color
-        this.width = width
-        this.height = height
-        
+// class Block {
+//     constructor(x, y, color, width, height, direction){
+//         this.x = x
+//         this.y = y
+//         this.color = color
+//         this.width = width
+//         this.height = height
+//         this.direction = direction
 
 
-  document.getElementById('status').addEventListener('click', function(){
-      block.render()
-      
+//   document.getElementById('status').addEventListener('click', function(){
+//       block.render()
+//       
     
-  })
+//   })
 
-  const firstBlock = new Block(100,100, '#55dac6', 10, 10, 'right')
+//   const firstBlock = new Block(100,100, '#55dac6', 10, 10, 'right')
 
 //this function allows me to use buttoons on my key board
 document.addEventListener('keyup', function(evt){
@@ -85,105 +98,149 @@ function rePaint(){
     }else if(snake.direction === 'down'){
             snake.y -=5
     }
-        
     
     snake.render()
-    collision()
-
+    if(block1.alive){
+        block1.render()
+    }
+   
+    collisionWall()
+    eatingBlock()
+    //collisionBlock()
 }
 setInterval(rePaint, 1000/20 ) 
 
-function randomPosition(){
+//start with collision detection between snake and block1
+function eatingBlock() {
+     if (snake.x < block1.x + block1.width 
+        && snake.x + snake.width > block1.x
+        && snake.y < block1.y + block1.height
+        && snake.y + snake.height > block1.y
+        ){
+        block1.alive = false
+        // Need to render the block in a new position on the board
+
+     }
+
+     
+     //if (snake.x + snake.width > block1.x){
+    //      console.log('hit 2')
+    //  }
+    //     snake.x < block1.x + block1.width &&
+    //     snake.y + snake.height > block1.y &&
+    //     snake.y < block1.y + block1.height ) { 
+
+    //     block1.alive = false
+        
+        //block1 = new Block(newX, newY, 10, 10, 'blue');
+    }
+
+
+// function randomPosition(){
     
 
     
-    Block1.render()
-    // Block2.render()
-    // Block3.render()
-    // Block4.render()
-    // Block5.render()
-    // Block6.render()
+//     Block1.render()
+//     // Block2.render()
+//     // Block3.render()
+//     // Block4.render()
+//     // Block5.render()
+//     // Block6.render()
 
-}
-setInterval(randomPosition, 1000/20)
-
-//collision with the gamebaord
-// function collision(snake){
-//     if(snake.direction < game ) {
-//         console.log('game over');
-//     }
-//     if(snake.direction > game){
-//         console.log('game over as well ');
-//     }
 // }
+// setInterval(randomPosition, 1000/20)
 
 
 
-// collision detection
-function collision(){
+// collision detection with game canvas and ending the game
+function collisionWall(){
     if(snake.y > game.height){
-        //console.log("game is over")
+        
         resetCanvas()
-        gameOver();
-        //clearInterval(rePaint)
+        gameOverMessage();
+        
     }else if(snake.x < 0){
-        //console.log("game is over")
+        
         resetCanvas()
-        gameOver()
-        //clearInterval(rePaint)
+        gameOverMessage()
+        
     }else if(snake.x > game.width){
-        //console.log("game is over")
+        
         resetCanvas()
-        gameOver()
-        //clearInterval(rePaint)
+        gameOverMessage()
+        
     }else if(snake.y <0){
-        //console.log("game is over")
+        
         resetCanvas()
-        gameOver()
-        //clearInterval(rePaint)
+        gameOverMessage()
+        
 }
 }
+// function collisionBlock(){
+//     if(snake.y > block1.height){
+//         //console.log("game is over")
+//         resetCanvas()
+//         gameOver();
+//         //clearInterval(rePaint)
+//     }else if(snake.x < block1.width){
+//         //console.log("game is over")
+//         resetCanvas()
+//         gameOver()
+//         //clearInterval(rePaint)
+//     }else if(snake.x > game.width){
+//         //console.log("game is over")
+//         resetCanvas()
+//         gameOver()
+//         //clearInterval(rePaint)
+//     }else if(snake.y <0){
+//         //console.log("game is over")
+//         resetCanvas()
+//         gameOver()
+//         //clearInterval(rePaint)
+// }
+// }
 
 // will tell user they lost and to restart the page for now
 
-function gameOver() {
+function gameOverMessage() {
     
     ctx.fillStyle = 'green';
     ctx.textBaseline = 'middle'; 
     ctx.textAlign = 'center'; 
     ctx.font = 'normal bold 30px arial';
     
-    ctx.fillText('You lost please restart the page to try again',  game.width/2 , game.height/2);
+    ctx.fillText('You lost the game try again',  game.width/2 , game.height/2);
 }
 function resetCanvas() {
-    ctx.clearRect(0,0,game.width,game.height)
+    //ctx.clearRect(0,0,game.width,game.height)
+    window.location.reload();
 }
 //have blocks pop up on my canvas in random order(eat them up like packman first )
 
-function random(min, max) {
-    return Math.round((Math.random() * (max-min) + min) / 10) * 10;
-  }function makeBlocks() {
-    foodX = random(0, game.width - 10);
-    foodY = random(0, game.height - 10);  snake.forEach(function isFoodOnSnake(part) {
-      const foodIsOnSnake = part.x == foodX && part.y == foodY
-      if (foodIsOnSnake)
-        createFood();
-    });
-  }
-  function drawFood() {
-    ctx.fillStyle = 'red';
-    ctx.strokestyle = 'darkred';
-    ctx.fillRect(foodX, foodY, 10, 10);
-    ctx.strokeRect(foodX, foodY, 10, 10);
-   }
-   function main() {
-    setTimeout(function onTick() {
-      clearCanvas();
-      drawFood()
-      advanceSnake();
-      drawSnake();    main();
-    }, 100)
-  }
+// function random(min, max) {
+//     return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+//   }function makeBlocks() {
+//     foodX = random(0, game.width - 10);
+//     foodY = random(0, game.height - 10);  snake.forEach(function isFoodOnSnake(part) {
+//       const foodIsOnSnake = part.x == foodX && part.y == foodY
+//       if (foodIsOnSnake)
+//         createFood();
+//     });
+//   }
+//   function drawFood() {
+//     ctx.fillStyle = 'red';
+//     ctx.strokestyle = 'darkred';
+//     ctx.fillRect(foodX, foodY, 10, 10);
+//     ctx.strokeRect(foodX, foodY, 10, 10);
+//    }
+//    function main() {
+//     setTimeout(function onTick() {
+//       clearCanvas();
+//       drawFood()
+//       advanceSnake();
+//       drawSnake();    main();
+//     }, 100)
+//   }
   
 
 // const newBlock = new snakeBlock(10, 10, 'blue', 10, 10, 'null')

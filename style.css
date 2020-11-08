@@ -20,15 +20,15 @@ html,body {
   
   canvas {
   
-    background-color: black;
-    width: 100%;
+    background-image: url(https://i.pinimg.com/originals/af/6d/69/af6d69fb97e368eaf3989cce387fc79b.jpg);
+    width: 80%;
     height: 100;
   }
   
   #container {
   max-width: 50em;
   /* height: 70vh; */
-  background-color:greenyellow;
+  /*background-color:black; */
   margin: 0 auto;
   padding: 1em;
   display: grid;
@@ -44,7 +44,7 @@ html,body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #222;
+    background-color:black;
   }
   
   #top-left {
