@@ -134,12 +134,12 @@ function eatingBlock() {
         && snake.y < block1.y + block1.height
         && snake.y + snake.height > block1.y
         ){
-        relocateBlock();
-        score += 1;
-        document.getElementById('score').innerHTML = 'Score ' + score
-        // block1.alive = false
-        // Need to render the block in a new position on the board
-        
+            // block1.alive = false
+            // Need to render the block in a new position on the board
+            
+            relocateBlock();
+            score += 1;
+            document.getElementById('score').innerHTML = 'Score ' + score
 
      }
 

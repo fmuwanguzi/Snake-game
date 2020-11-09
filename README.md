@@ -1,4 +1,4 @@
-## Snake-game
+## Felix's Snake 🐍 game
 
 Goal of the game is to have a block generate move using keys on keyboard. And eat other blocks kind of like pacman. 
 
@@ -23,7 +23,7 @@ document.addEventListener('keyup', function(evt){
     }
 ```
 
-This allowed me to have an end of game message using an if statemtent and a gameOver funcion
+This allowed me to have an end of game message using an if statemtent and a gameOver funcion that displays you lost on the screen
 
 ```javascript
 function collision(){
@@ -61,5 +61,38 @@ function resetCanvas() {
 }
 ```
 
+## Getting through this blocker was the most exciting thing  🙌  :
 
+After realizing I might have to start over if I use the same technique we used canvas crawler I decided to see if I could just relocate the snake
+
+```javascript
+function relocateBlock(){
+    const minx = 0;
+    const maxx = 400;
+    const xvalue = Math.random() * (maxx - minx) + minx;
+
+    const miny = 0;
+    const maxy = 200;
+    const yvalue = Math.random() * (maxy - miny) + miny;
+
+    block1.x = xvalue;
+    block1.y = yvalue;
+}
+```
+This relocate function is now used every time the snake and block detect collisiton inside my eatingBlock function and the score changes as well
+
+```javascript
+function eatingBlock() {
+     if (snake.x < block1.x + block1.width 
+        && snake.x + snake.width > block1.x
+        && snake.y < block1.y + block1.height
+        && snake.y + snake.height > block1.y
+        ){
+           
+            
+            relocateBlock();
+            score += 1;
+            document.getElementById('score').innerHTML = 'Score ' + score
+}
+```
 
