@@ -19,7 +19,7 @@ const ctx = game.getContext('2d')
           this.width = width
           this.height = height
           this.direction = direction //snake can now move automatically
-          //this.alive = true
+          //this.alive = true chose to use relocation instead of making the block disappear
     
 }
 render(){
@@ -99,20 +99,22 @@ function relocateBlock(){
     block1.y = yvalue;
 }
 
-//This is an animation function 
+//This is an animation function game goes faster as you eat blocks 
 function rePaint(){
     
     ctx.clearRect(0, 0, game.width, game.height)
     
     if(snake.direction === 'left'){
-        snake.x -=5
+        snake.x -=(5 + score)
     }else if(snake.direction === 'right'){
-        snake.x +=5
+        snake.x +=(5 + score)
     }else if(snake.direction === 'up' ){
-            snake.y +=5
+            snake.y +=(5 + score)
     }else if(snake.direction === 'down'){
-            snake.y -=5
+            snake.y -=(5 + score)
     }
+   
+    
     
     snake.render()
     block1.render()
@@ -136,11 +138,12 @@ function eatingBlock() {
         ){
             // block1.alive = false
             // Need to render the block in a new position on the board
-            
+            //this relocates the blocks and add to the snakeswidth
             relocateBlock();
             score += 1;
             document.getElementById('score').innerHTML = 'Score ' + score
-            snake.width += 10;
+            snake.width += 5;
+            snake.height += 5;
 
      }
 }
@@ -148,9 +151,13 @@ function eatingBlock() {
 function winner(){
     if(score === 10){
         gameWin()
-        resetCanvas()
+        //resetCanvas()
     }
 }
+
+$("#reset").click(function(){
+    ctx.clearRect(0, 0,  canvas.width, canvas.height);
+  });
 
      
      //if (snake.x + snake.width > block1.x){
@@ -186,27 +193,27 @@ function winner(){
 function collisionWall(){
     if(snake.y > game.height){
         
-        resetCanvas()
+        //resetCanvas()
         gameOverMessage();
         
     }else if(snake.x < 0){
         
-        resetCanvas()
+        //resetCanvas()
         gameOverMessage()
         
     }else if(snake.x > game.width){
         
-        resetCanvas()
+        //resetCanvas()
         gameOverMessage()
         
     }else if(snake.y <0){
         
-        resetCanvas()
+        //resetCanvas()
         gameOverMessage()
         
 }
 }
-// function collisionBlock(){
+// function collisionBloc
 //     if(snake.y > block1.height){
 //         //console.log("game is over")
 //         resetCanvas()
