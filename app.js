@@ -137,7 +137,7 @@ let score = 0;
                 //this relocates the blocks and add to the snakeswidth
                 relocateBlock();
                 score += 1;
-                document.getElementById('score').innerHTML = 'Score ' + score
+                document.getElementById('score').innerText = 'Score ' + score
                 snake.width += 5;
                 snake.height += 5;
                 
@@ -156,9 +156,8 @@ let score = 0;
     });
 
     //Start the game
-    // document.getElementById("Start").addEventListener("click", function(){
-    //     snake.render()
-    //     Block1.render()
+    // document.getElementById("status").addEventListener("click", function(){
+    //     
     // })
                 
                 

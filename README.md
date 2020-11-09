@@ -28,20 +28,18 @@ This allowed me to have an end of game message using an if statemtent and a game
 ```javascript
 function collision(){
     if(snake.y > game.height){
-        resetCanvas()
+        
         gameOver();
     }else if(snake.x < 0){
-        resetCanvas()
+        
         gameOver()
     
     }else if(snake.x > game.width){
         
-        resetCanvas()
         gameOver()
         
     }else if(snake.y <0){
     
-        resetCanvas()
         gameOver()
         
 }
@@ -54,11 +52,9 @@ function gameOver() {
     ctx.textAlign = 'center'; 
     ctx.font = 'normal bold 30px arial';
     
-    ctx.fillText('You lost please restart the page to try again',  game.width/2 , game.height/2);
+    ctx.fillText('You lost',  game.width/2 , game.height/2);
 }
-function resetCanvas() {
-    ctx.clearRect(0,0,game.width,game.height)
-}
+
 ```
 
 ## Getting through this blocker was the most exciting thing  🙌  :
@@ -79,9 +75,11 @@ function relocateBlock(){
     block1.y = yvalue;
 }
 ```
-This relocate function is now used every time the snake and block detect collisiton inside my eatingBlock function and the score changes as well
+This relocate function is now used every time the snake and block detect collisiton inside my eatingBlock function and the score changes as well.
+As a last minute addition to increase the size of the snake game I added adders to snake.width and height.
 
 ```javascript
+let score = 0;
 function eatingBlock() {
      if (snake.x < block1.x + block1.width 
         && snake.x + snake.width > block1.x
@@ -90,9 +88,23 @@ function eatingBlock() {
         ){
            
             
-            relocateBlock();
-            score += 1;
-            document.getElementById('score').innerHTML = 'Score ' + score
+        relocateBlock();
+        score += 1;
+        document.getElementById('score').innerHTML = 'Score ' + score
+        snake.width += 5;
+        snake.height += 5;
 }
 ```
 
+As part of the requirements for this project I added a reset button using an event listner.
+
+```javascript
+
+  //Reset the game
+    document.getElementById("reset").addEventListener("click",function(){
+        resetCanvas()
+    });
+    // clears the canvas when invoked
+    function resetCanvas() {
+    window.location.reload();
+}
