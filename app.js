@@ -19,7 +19,7 @@ const ctx = game.getContext('2d')
           this.width = width
           this.height = height
           this.direction = direction //snake can now move automatically
-          this.alive = true
+          //this.alive = true
     
 }
 render(){
@@ -43,7 +43,8 @@ render(){
 
 const snake = new snakeBlock(200, 200, '#55dac6', 10, 10, 'left')
 const block1 = new snakeBlock(10, 10, 'blue', 10, 10, 'null')
-
+let score = 0;
+//onst block12 = new snakeBlock(300, 300, 'blue', 10, 10, 'null')
 
 // class Block {
 //     constructor(x, y, color, width, height, direction){
@@ -84,6 +85,20 @@ document.addEventListener('keyup', function(evt){
     movementDisplay.textContent = `X:${snake.x}, Y${snake.y}`
 })
 
+//This is a relocation function that will be called afer snake hits block
+function relocateBlock(){
+    const minx = 0;
+    const maxx = 400;
+    const xvalue = Math.random() * (maxx - minx) + minx;
+
+    const miny = 0;
+    const maxy = 200;
+    const yvalue = Math.random() * (maxy - miny) + miny;
+
+    block1.x = xvalue;
+    block1.y = yvalue;
+}
+
 //This is an animation function 
 function rePaint(){
     
@@ -100,9 +115,11 @@ function rePaint(){
     }
     
     snake.render()
-    if(block1.alive){
-        block1.render()
-    }
+    block1.render()
+    
+    // if(block1.alive){
+    //     block1.render()
+    // }
    
     collisionWall()
     eatingBlock()
@@ -117,8 +134,12 @@ function eatingBlock() {
         && snake.y < block1.y + block1.height
         && snake.y + snake.height > block1.y
         ){
-        block1.alive = false
+        relocateBlock();
+        score += 1;
+        document.getElementById('score').innerHTML = 'Score ' + score
+        // block1.alive = false
         // Need to render the block in a new position on the board
+        
 
      }
 
@@ -212,35 +233,11 @@ function gameOverMessage() {
     ctx.fillText('You lost the game try again',  game.width/2 , game.height/2);
 }
 function resetCanvas() {
-    //ctx.clearRect(0,0,game.width,game.height)
     window.location.reload();
 }
 //have blocks pop up on my canvas in random order(eat them up like packman first )
 
-// function random(min, max) {
-//     return Math.round((Math.random() * (max-min) + min) / 10) * 10;
-//   }function makeBlocks() {
-//     foodX = random(0, game.width - 10);
-//     foodY = random(0, game.height - 10);  snake.forEach(function isFoodOnSnake(part) {
-//       const foodIsOnSnake = part.x == foodX && part.y == foodY
-//       if (foodIsOnSnake)
-//         createFood();
-//     });
-//   }
-//   function drawFood() {
-//     ctx.fillStyle = 'red';
-//     ctx.strokestyle = 'darkred';
-//     ctx.fillRect(foodX, foodY, 10, 10);
-//     ctx.strokeRect(foodX, foodY, 10, 10);
-//    }
-//    function main() {
-//     setTimeout(function onTick() {
-//       clearCanvas();
-//       drawFood()
-//       advanceSnake();
-//       drawSnake();    main();
-//     }, 100)
-//   }
+
   
 
 // const newBlock = new snakeBlock(10, 10, 'blue', 10, 10, 'null')
