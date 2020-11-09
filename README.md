@@ -109,5 +109,14 @@ As part of the requirements for this project I added a reset button using an eve
     window.location.reload();
 }
 ```
-![Came so far](file:///var/folders/l0/ngk6d_8178lgcprkf3249jk40000gn/T/TemporaryItems/(A%20Document%20Being%20Saved%20By%20screencaptureui%208)/Screen%20Shot%202020-11-09%20at%202.27.57%20PM.png)
 
+
+Combination of all these moving parts allowed for this image below which shows that the user/player going out of bounds and losing after missing the block.
+![Came so far](image.png) 
+
+
+## Some additional goals
+
+I prepped a separte start screen that the user would click to start the game and the link work but I didn't have a chance to style it so I did not deply it to my website link.
+
+In addition to that would like to have more fluid turns and animations with each turn of the snake block
