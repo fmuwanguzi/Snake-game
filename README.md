@@ -119,4 +119,6 @@ Combination of all these moving parts allowed for this image below which shows t
 
 I prepped a separte start screen that the user would click to start the game and the link work but I didn't have a chance to style it so I did not deply it to my website link.
 
-In addition to that would like to have more fluid turns and animations with each turn of the snake block
+In addition to that would like to have more fluid turns and animations with each turn of the snake block 
+
+random line 
