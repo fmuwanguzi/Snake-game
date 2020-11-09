@@ -36,10 +36,6 @@ render(){
   
 // }
 }
-// document.getElementById('status').addEventListener('click', function(){
-//     snake.render()
-//     Block1.render()
-// })
 
 const snake = new snakeBlock(200, 200, '#55dac6', 10, 10, 'left')
 const block1 = new snakeBlock(30, 30, 'blue', 10, 10, 'null')
@@ -48,122 +44,128 @@ let score = 0;
 
 // class Block {
 //     constructor(x, y, color, width, height, direction){
-//         this.x = x
-//         this.y = y
-//         this.color = color
-//         this.width = widthwwwww
-//         this.height = height
-//         this.direction = direction
-
-
-//   document.getElementById('status').addEventListener('click', function(){
-//       block.render()
-//       
+    //         this.x = x
+    //         this.y = y
+    //         this.color = color
+    //         this.width = widthwwwww
+    //         this.height = height
+    //         this.direction = direction
     
-//   })
-
-//   const firstBlock = new Block(100,100, '#55dac6', 10, 10, 'right')
-
-//this function allows me to use buttoons on my key board
-document.addEventListener('keyup', function(evt){
     
-    if(evt.key === 'w'){
-        snake.direction = 'down' 
-    }else if(evt.key ==='a' ){
-        snake.direction = 'left'
-    
-    }else if(evt.key === 's'){
-        snake.direction = 'up'
-    
-    }else if(evt.key ==='d') {
-        snake.direction = 'right'
+    //   document.getElementById('status').addEventListener('click', function(){
+        //       block.render()
+        //       
         
-    }
-    
+        //   })
         
-
-    movementDisplay.textContent = `X:${snake.x}, Y${snake.y}`
-})
-
-//This is a relocation function that will be called afer snake hits block
-function relocateBlock(){
-    const minx = 0;
-    const maxx = 600;
-    const xvalue = Math.random() * (maxx - minx) + minx;
-
-    const miny = 0;
-    const maxy = 300;
-    const yvalue = Math.random() * (maxy - miny) + miny;
-
-    block1.x = xvalue;
-    block1.y = yvalue;
-}
-
-//This is an animation function game goes faster as you eat blocks 
-function rePaint(){
-    
-    ctx.clearRect(0, 0, game.width, game.height)
-    
-    if(snake.direction === 'left'){
-        snake.x -=(5 + score)
-    }else if(snake.direction === 'right'){
-        snake.x +=(5 + score)
-    }else if(snake.direction === 'up' ){
+        //   const firstBlock = new Block(100,100, '#55dac6', 10, 10, 'right')
+        
+    //this function allows me to use buttoons on my key board
+    document.addEventListener('keyup', function(evt){
+        
+        if(evt.key === 'w'){
+            snake.direction = 'down' 
+        }else if(evt.key ==='a' ){
+            snake.direction = 'left'
+            
+        }else if(evt.key === 's'){
+            snake.direction = 'up'
+            
+        }else if(evt.key ==='d') {
+            snake.direction = 'right'
+            
+        }
+        
+        
+        
+        movementDisplay.textContent = `X:${snake.x}, Y${snake.y}`
+    })
+        
+    //This is a relocation function that will be called afer snake hits block
+    function relocateBlock(){
+        const minx = 0;
+        const maxx = 600;
+        const xvalue = Math.random() * (maxx - minx) + minx;
+        
+        const miny = 0;
+        const maxy = 300;
+        const yvalue = Math.random() * (maxy - miny) + miny;
+        
+        block1.x = xvalue;
+        block1.y = yvalue;
+        }
+        
+    //This is an animation function game goes faster as you eat blocks 
+    function rePaint(){
+        
+        ctx.clearRect(0, 0, game.width, game.height)
+        
+        if(snake.direction === 'left'){
+            snake.x -=(5 + score)
+        }else if(snake.direction === 'right'){
+            snake.x +=(5 + score)
+        }else if(snake.direction === 'up' ){
             snake.y +=(5 + score)
-    }else if(snake.direction === 'down'){
+        }else if(snake.direction === 'down'){
             snake.y -=(5 + score)
+        }
+        
+        
+        
+        snake.render()
+        block1.render()
+
+        // if(block1.alive){
+            //     block1.render()
+            // }
+            winner()
+            collisionWall()
+            eatingBlock()
+            //collisionBlock()
+        }
+        setInterval(rePaint, 1000/20 ) 
+        
+    //start with collision detection between snake and block1
+    function eatingBlock() {
+        if (snake.x < block1.x + block1.width 
+            && snake.x + snake.width > block1.x
+            && snake.y < block1.y + block1.height
+            && snake.y + snake.height > block1.y
+            ){
+                // block1.alive = false
+                // Need to render the block in a new position on the board
+                //this relocates the blocks and add to the snakeswidth
+                relocateBlock();
+                score += 1;
+                document.getElementById('score').innerHTML = 'Score ' + score
+                snake.width += 5;
+                snake.height += 5;
+                
+            }
+        }
+    //function to declare you won the game
+    function winner(){
+        if(score === 10){
+            gameWin()
+            //resetCanvas()
+        }
     }
-   
-    
-    
-    snake.render()
-    block1.render()
-    
-    // if(block1.alive){
-    //     block1.render()
-    // }
-    winner()
-    collisionWall()
-    eatingBlock()
-    //collisionBlock()
-}
-setInterval(rePaint, 1000/20 ) 
+    //Reset the game
+    document.getElementById("reset").addEventListener("click",function(){
+        resetCanvas()
+    });
 
-//start with collision detection between snake and block1
-function eatingBlock() {
-     if (snake.x < block1.x + block1.width 
-        && snake.x + snake.width > block1.x
-        && snake.y < block1.y + block1.height
-        && snake.y + snake.height > block1.y
-        ){
-            // block1.alive = false
-            // Need to render the block in a new position on the board
-            //this relocates the blocks and add to the snakeswidth
-            relocateBlock();
-            score += 1;
-            document.getElementById('score').innerHTML = 'Score ' + score
-            snake.width += 5;
-            snake.height += 5;
-
-     }
-}
-//function to declare you won the game
-function winner(){
-    if(score === 10){
-        gameWin()
-        //resetCanvas()
-    }
-}
-
-$("#reset").click(function(){
-    ctx.clearRect(0, 0,  canvas.width, canvas.height);
-  });
-
-     
-     //if (snake.x + snake.width > block1.x){
-    //      console.log('hit 2')
-    //  }
-    //     snake.x < block1.x + block1.width &&
+    //Start the game
+    // document.getElementById("Start").addEventListener("click", function(){
+    //     snake.render()
+    //     Block1.render()
+    // })
+                
+                
+                //if (snake.x + snake.width > block1.x){
+                    //      console.log('hit 2')
+                    //  }
+                    //     snake.x < block1.x + block1.width &&
     //     snake.y + snake.height > block1.y &&
     //     snake.y < block1.y + block1.height ) { 
 

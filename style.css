@@ -5,15 +5,41 @@ html,body {
 
   button{
     font-family: 'Press Start 2P', monospace;
-   
-    color: goldenrod;
+    background-image: url(https://s3.amazonaws.com/kzs3files/kidzsearchgl-happy-snakes-ks120414-158859-img.png);
+    background-size: cover;
+    color:greenyellow;
+    text-align: center;
+    cursor:pointer;
+    position:absolute;
+    width:300px;
+    height:100px;
+    bottom:30px;
+    right:25%;
+    left:50%;
+    margin-left:-150px;
+
+  }
+  button1{
+    font-family: 'Press Start 2P', monospace;
+    background-image: url(https://s3.amazonaws.com/kzs3files/kidzsearchgl-happy-snakes-ks120414-158859-img.png);
+    background-size: cover;
+    color:greenyellow;
+    text-align: center;
+    cursor:pointer;
+    position:absolute;
+    width:200px;
+    height:100px;
+    bottom:50%;
+    right:25%;
+    left:50%;
+    margin-left:-150px;
 
   }
   
   body {
     padding-top: 1em;
     text-align: center;
-    background-image: url(https://s.yimg.com/lo/api/res/1.2/1DNoMyMSMCwqLIy9OqbcTQ--/YXBwaWQ9YXBlY21lZGlhO3NtPTE7dz04MDA-/https://media.zenfs.com/en/popular_mechanics_642/9801c0a49960ac6bc67bc792c7d2e421);
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRVnuDS1MvtZCZp3BUreV0ePswTrrydyOj1-g&usqp=CAU);
     
     background-size: cover;
     background-repeat: space;
@@ -22,7 +48,7 @@ html,body {
   h1, h2 {
     font-family: 'Press Start 2P', monospace;
    
-    color: goldenrod;
+    color: greenyellow;
   }
   
   canvas {
