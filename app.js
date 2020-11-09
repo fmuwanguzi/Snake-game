@@ -147,6 +147,7 @@ let score = 0;
     function winner(){
         if(score === 10){
             gameWin()
+            
             //resetCanvas()
         }
     }
@@ -195,48 +196,32 @@ function collisionWall(){
     if(snake.y > game.height){
         
         //resetCanvas()
-        gameOverMessage();
+        clearCanvas()
+        gameOverMessage()
         
     }else if(snake.x < 0){
         
         //resetCanvas()
+        clearCanvas()
         gameOverMessage()
         
     }else if(snake.x > game.width){
         
         //resetCanvas()
+        clearCanvas()
         gameOverMessage()
         
     }else if(snake.y <0){
         
         //resetCanvas()
+        clearCanvas()
         gameOverMessage()
         
 }
 }
-// function collisionBloc
-//     if(snake.y > block1.height){
-//         //console.log("game is over")
-//         resetCanvas()
-//         gameOver();
-//         //clearInterval(rePaint)
-//     }else if(snake.x < block1.width){
-//         //console.log("game is over")
-//         resetCanvas()
-//         gameOver()
-//         //clearInterval(rePaint)
-//     }else if(snake.x > game.width){
-//         //console.log("game is over")
-//         resetCanvas()
-//         gameOver()
-//         //clearInterval(rePaint)
-//     }else if(snake.y <0){
-//         //console.log("game is over")
-//         resetCanvas()
-//         gameOver()
-//         //clearInterval(rePaint)
-// }
-// }
+function clearCanvas(){
+    ctx.clearRect(0,0, game.width, game.height)
+}
 
 // will tell user they lost and to restart the page for now
 
