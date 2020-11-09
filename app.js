@@ -42,7 +42,7 @@ render(){
 // })
 
 const snake = new snakeBlock(200, 200, '#55dac6', 10, 10, 'left')
-const block1 = new snakeBlock(10, 10, 'blue', 10, 10, 'null')
+const block1 = new snakeBlock(30, 30, 'blue', 10, 10, 'null')
 let score = 0;
 //onst block12 = new snakeBlock(300, 300, 'blue', 10, 10, 'null')
 
@@ -51,7 +51,7 @@ let score = 0;
 //         this.x = x
 //         this.y = y
 //         this.color = color
-//         this.width = width
+//         this.width = widthwwwww
 //         this.height = height
 //         this.direction = direction
 
@@ -88,11 +88,11 @@ document.addEventListener('keyup', function(evt){
 //This is a relocation function that will be called afer snake hits block
 function relocateBlock(){
     const minx = 0;
-    const maxx = 400;
+    const maxx = 600;
     const xvalue = Math.random() * (maxx - minx) + minx;
 
     const miny = 0;
-    const maxy = 200;
+    const maxy = 300;
     const yvalue = Math.random() * (maxy - miny) + miny;
 
     block1.x = xvalue;
@@ -120,7 +120,7 @@ function rePaint(){
     // if(block1.alive){
     //     block1.render()
     // }
-   
+    winner()
     collisionWall()
     eatingBlock()
     //collisionBlock()
@@ -140,8 +140,17 @@ function eatingBlock() {
             relocateBlock();
             score += 1;
             document.getElementById('score').innerHTML = 'Score ' + score
+            snake.width += 10;
 
      }
+}
+//function to declare you won the game
+function winner(){
+    if(score === 10){
+        gameWin()
+        resetCanvas()
+    }
+}
 
      
      //if (snake.x + snake.width > block1.x){
@@ -154,7 +163,7 @@ function eatingBlock() {
     //     block1.alive = false
         
         //block1 = new Block(newX, newY, 10, 10, 'blue');
-    }
+    
 
 
 // function randomPosition(){
@@ -235,7 +244,18 @@ function gameOverMessage() {
 function resetCanvas() {
     window.location.reload();
 }
-//have blocks pop up on my canvas in random order(eat them up like packman first )
+
+//function to display you win
+
+function gameWin() {
+    
+    ctx.fillStyle = 'green';
+    ctx.textBaseline = 'middle'; 
+    ctx.textAlign = 'center'; 
+    ctx.font = 'normal bold 30px arial';
+    
+    ctx.fillText('You Win',  game.width/2 , game.height/2);
+}
 
 
   
