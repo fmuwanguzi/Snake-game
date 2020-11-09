@@ -108,3 +108,6 @@ As part of the requirements for this project I added a reset button using an eve
     function resetCanvas() {
     window.location.reload();
 }
+```
+![Came so far](file:///var/folders/l0/ngk6d_8178lgcprkf3249jk40000gn/T/TemporaryItems/(A%20Document%20Being%20Saved%20By%20screencaptureui%208)/Screen%20Shot%202020-11-09%20at%202.27.57%20PM.png)
+
