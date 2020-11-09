@@ -1,3 +1,4 @@
+console.log("testing")
 const movementDisplay = document.querySelector ('#movement')
 const game = document.querySelector('#game')
 
