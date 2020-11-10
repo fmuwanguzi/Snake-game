@@ -113,7 +113,7 @@ let score = 0;
     //function to declare you won the game
     //It also allways you to win after the 10 bite
     function winner(){
-        if(score === 10){
+        if(score === 50){
             clearCanvas()
             gameWin()
         }
