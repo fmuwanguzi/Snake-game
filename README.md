@@ -2,11 +2,17 @@
 
 ## Felix's Snake 🐍 game
 
-Link to github website https://fmuwanguzi.github.io/
+If you'd like to contribute or codealong with me just pull-request on my project link https://github.com/fmuwanguzi/Snake-game
+
+Link to access the game website https://fmuwanguzi.github.io/
+
+This was my first project trying to build out a game using HTML canvas,css  and javascript. Motivation for trying to make this game wasn't just that it was my first project at general assembly bootcamp. I remember playing this  game on old nokia flip phones. 
 
 Goal of the game is to have a block generate, move using keys on keyboard. And eat other blocks kind of like pacman. Difficulty of the game increases becuase the first block grows in size and moves faster as the game continues.
 
 Below is some of the code I used to create the game.
+
+## LETS GO
 
 This allowed me to achieve movement using my keyboard
 
