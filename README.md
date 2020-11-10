@@ -4,9 +4,9 @@
 
 Link to github website https://fmuwanguzi.github.io/
 
-Goal of the game is to have a block generate move using keys on keyboard. And eat other blocks kind of like pacman. 
+Goal of the game is to have a block generate, move using keys on keyboard. And eat other blocks kind of like pacman. Difficulty of the game increases becuase the first block grows in size and moves faster as the game continues.
 
-My blockers have been generating random block on my game board.
+Below is some of the code I used to create the game.
 
 This allowed me to achieve movement using my keyboard
 
@@ -27,24 +27,30 @@ document.addEventListener('keyup', function(evt){
     }
 ```
 
-This allowed me to have an end of game message using an if statemtent and a gameOver funcion that displays you lost on the screen
+This allowed me to have an end of game message using an if statemtent and more importantantly collision detection between my block and the outside wall.
 
 ```javascript
-function collision(){
+function collisionWall(){
     if(snake.y > game.height){
+        clearCanvas()
+        gameOverMessage()
+    
         
-        gameOver();
     }else if(snake.x < 0){
         
-        gameOver()
-    
+        clearCanvas()
+        gameOverMessage()
+
+        
     }else if(snake.x > game.width){
         
-        gameOver()
+        clearCanvas()
+        gameOverMessage()
         
     }else if(snake.y <0){
-    
-        gameOver()
+        
+        clearCanvas()
+        gameOverMessage()
         
 }
 }
@@ -63,7 +69,7 @@ function gameOver() {
 
 ## Getting through this blocker was the most exciting thing  🙌  :
 
-After realizing I might have to start over if I use the same technique we used canvas crawler(makeing the block completely disappear using alive.false) I decided to see if I could just relocate the blocks that snake needs to eat to grow
+After realizing I might have to start over if I use the same technique we used canvas crawler(making the block(that ate another block) .I decided to see if I could just relocate the blocks that snake needs to eat to grow
 
 ```javascript
 function relocateBlock(){
@@ -80,7 +86,7 @@ function relocateBlock(){
 }
 ```
 This relocate function is now used every time the snake and block detect collisiton inside my eatingBlock function and the score changes as well.
-As a last minute addition to increase the size of the snake game I incrimentallt added to snake.width and height.
+And lastly to increase the size of the snake game incrimentally. 
 
 This function also allows for the score to go up with each bite
 ```javascript
@@ -102,7 +108,7 @@ function eatingBlock() {
 }
 ```
 
-As part of the requirements for this project I added a reset button using an event listner.
+As part of the requirements for this project I created a reset button using an event listner.
 
 ```javascript
 
@@ -115,7 +121,7 @@ As part of the requirements for this project I added a reset button using an eve
     window.location.reload();
 }
 ```
-I used a set interval for myanimations and the game becomes incrementally faster after each block that gets consume by my snake. This allows for the game to have increasing difficulty.
+I used a set interval for my animations. The animations becomes incrementally faster after each block that gets consume by my snake(5+ score). This allows for the game to have increasing difficulty.
 
 ```javascript
     function rePaint(){
@@ -146,7 +152,7 @@ I used a set interval for myanimations and the game becomes incrementally faster
 
 ```
 
-Each of these functions allows for the canvas to be cleared first by clearing annyblocks on the canvas and then clearing the interval function above.
+I had an slight issue when I was testing the lose functions. I had not cleared the timer that allows for animation. And also using clearRect to remove any block left on the cavas.
 
 ```javascript
 function clearCanvas(){
@@ -154,6 +160,7 @@ function clearCanvas(){
     clearInterval(intervalID);
 }
 ```
+
 I also set up my winning conditions of eating at least 10 blocks and then displaying a message
 
 ```javascript
@@ -164,7 +171,7 @@ function gameWin() {
     ctx.textAlign = 'center'; 
     ctx.font = 'normal bold 30px arial';
     
-    ctx.fillText('You Win YOU MADE IT TO 10',  game.width/2 , game.height/2);
+    ctx.fillText('You Win',  game.width/2 , game.height/2);
 }
 function winner(){
     if(score === 10){
@@ -181,7 +188,9 @@ Combination of all these moving parts allowed for this image below which shows t
 
 ## Some additional goals
 
-I prepped a separte start screen that the user would click to start the game and the link work but I didn't have a chance to style it so I did not deply it to my website link.
+I would to add a start screen that the user would click to start the game.
 
-In addition to that would like to have more fluid turns and animations with each turn of the snake block and change the block to an image that gets larger.
+I would like to make the block an image of a snake that shows the head of the snake turning and becoming larger.
+
+And lastly I would want to raise the win condition to 50 and allow players to be able to input there names and save their scores.
 

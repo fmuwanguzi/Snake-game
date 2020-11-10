@@ -80,9 +80,7 @@ let score = 0;
         }else if(snake.direction === 'down'){
             snake.y -=(5 + score)
         }
-        
-        
-        
+                       
         snake.render()
         block1.render()
 
@@ -101,7 +99,7 @@ let score = 0;
             && snake.y < block1.y + block1.height
             && snake.y + snake.height > block1.y
             ){
-                //
+                
                 //Need to render the block in a new position on the board
                 //This relocates the blocks and add to the snakes width and snake height
                 relocateBlock();
@@ -152,7 +150,7 @@ function collisionWall(){
 }
 }
 
-//Clears my blocks off the canvas and stops animation
+//Clears my blocks off the canvas and stops timer functions allowing annimation
 function clearCanvas(){
     ctx.clearRect(0,0, game.width, game.height)
     clearInterval(intervalID);
@@ -183,7 +181,7 @@ function gameWin() {
     ctx.textAlign = 'center'; 
     ctx.font = 'normal bold 30px arial';
     
-    ctx.fillText('You Win YOU MADE IT TO 10',  game.width/2 , game.height/2);
+    ctx.fillText('You Win',  game.width/2 , game.height/2);
 }
 
 
