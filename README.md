@@ -2,7 +2,7 @@
 
 ## Felix's Snake 🐍 game
 
-If you'd like to contribute or codealong just make pull-request on my project link https://github.com/fmuwanguzi/Snake-game
+If you'd like to contribute or codealong just  on my project just fork and clone. You cam make a pull request if you make any changes. https://github.com/fmuwanguzi/Snake-game
 
 Link to play the game https://fmuwanguzi.github.io/
 
