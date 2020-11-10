@@ -118,8 +118,6 @@ let score = 0;
         if(score === 10){
             clearCanvas()
             gameWin()
-            
-        
         }
     }
     //Reset the game with click event
