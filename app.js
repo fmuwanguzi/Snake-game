@@ -48,11 +48,7 @@ let score = 0;
             snake.direction = 'right'
             
         }
-        
-        console.log('snake.x', snake.x)
-
-        console.log('snake.y', snake.y)
-        
+         
         movementDisplay.textContent = `X:${snake.x}, Y${snake.y}`
     })
         
@@ -106,8 +102,8 @@ let score = 0;
             && snake.y + snake.height > block1.y
             ){
                 //
-                // Need to render the block in a new position on the board
-                //this relocates the blocks and add to the snakes width and snake height
+                //Need to render the block in a new position on the board
+                //This relocates the blocks and add to the snakes width and snake height
                 relocateBlock();
                 score += 1;
                 document.getElementById('score').innerText = 'Score ' + score
@@ -172,7 +168,6 @@ function gameOverMessage() {
     ctx.textBaseline = 'middle'; 
     ctx.textAlign = 'center'; 
     ctx.font = 'normal bold 30px arial';
-    
     ctx.fillText('You lost the game try again',  game.width/2 , game.height/2);
 }
 
@@ -190,7 +185,7 @@ function gameWin() {
     ctx.textAlign = 'center'; 
     ctx.font = 'normal bold 30px arial';
     
-    ctx.fillText('You Win',  game.width/2 , game.height/2);
+    ctx.fillText('You Win YOU MADE IT TO 10',  game.width/2 , game.height/2);
 }
 
 
