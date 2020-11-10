@@ -67,7 +67,7 @@ function gameOver() {
 
 ```
 
-## Getting through this blocker was the most exciting thing  🙌  :
+## Getting through this blocker 🙌  :
 
 After realizing I might have to start over if I use the same technique we used canvas crawler(making the block(that ate another block) .I decided to see if I could just relocate the blocks that snake needs to eat to grow
 
