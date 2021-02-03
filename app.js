@@ -1,14 +1,21 @@
 
 const movementDisplay = document.querySelector ('#movement')
+
 const game = document.querySelector('#game')
 
+
 const computedStyle = getComputedStyle(game)
+    // document.getElementById("start").addEventListener("click", function(){
+            
+    // });
 
 const height = computedStyle.height
 const width = computedStyle.width
 
 game.height = height.replace('px', '')
 game.width = width.replace('px' ,'')
+
+    
 
 const ctx = game.getContext('2d')
 
@@ -24,6 +31,7 @@ const ctx = game.getContext('2d')
 render(){
     ctx.fillStyle = this.color
     ctx.fillRect(this.x, this.y, this.width, this.height)
+
 }
 
 }
@@ -32,7 +40,10 @@ const snake = new snakeBlock(200, 200, '#55dac6', 10, 10, 'left')
 const block1 = new snakeBlock(30, 30, 'blue', 10, 10, 'null')
 let score = 0;
 
-        
+  
+
+
+
     //this function allows me to use buttoons on my key board
     document.addEventListener('keyup', function(evt){
         
@@ -66,6 +77,15 @@ let score = 0;
         block1.y = yvalue;
         }
         
+    //connecting the start button to animation function below
+    // document.getElementById("start").addEventListener("click", function(){
+        
+        // });
+    //     const intervalID = setInterval(rePaint, 1000/20 ) 
+    //     winner()
+    //     collisionWall()
+    //     eatingBlock()
+    
     //This is an animation function game goes faster as you eat blocks 
     function rePaint(){
         
@@ -89,8 +109,13 @@ let score = 0;
             eatingBlock()
            
         }
-     const intervalID = setInterval(rePaint, 1000/20 ) 
-     
+        const intervalID = setInterval(rePaint, 1000/20 )     
+          
+        
+        
+       
+
+    
         
     //start with collision detection between snake and block1
     function eatingBlock() {
